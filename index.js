@@ -1,7 +1,7 @@
 //These bring in the modules
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateMarkdown =require('./utils/generateMarkdown');
+const generateMarkdown = require("./utils/generateMarkdown");
 const path = require("path");
 
 // This is an array of questions for user input
@@ -54,32 +54,35 @@ const questions = [
   },
 ];
 
-// This function writes a file
+// This function writes a README file based on provided content
 function writeToFile(baseFileName, data) {
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const fileName = `${baseFileName.replace('.md', '')}-${timestamp}.md`;
-    const directoryPath = path.join(__dirname, 'output');
+  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+  const fileName = `${baseFileName.replace(".md", "")}-${timestamp}.md`;
+  const directoryPath = path.join(__dirname, "output");
 
-    fs.mkdir(directoryPath, { recursive: true }, (err) => { // Ensure the directory exists
-        if (err) {
-            console.error("Failed to create directory:", err);
-            return;
-        }
+  fs.mkdir(directoryPath, { recursive: true }, (err) => {
+    // Ensure the directory exists
+    if (err) {
+      console.error("Failed to create directory:", err);
+      return;
+    }
 
-        const filePath = path.join(directoryPath, fileName); // Create the full file path
-        fs.writeFile(filePath, data, (err) => { // Write the file to the directory
-            if (err) {
-                console.error("Failed to write to file:", err);
-                return;
-            }
-            console.log(`Successfully wrote to ${filePath}`);
-        });
+    const filePath = path.join(directoryPath, fileName); // Create the full file path
+    fs.writeFile(filePath, data, (err) => {
+      // Write the file to the directory
+      if (err) {
+        console.error("Failed to write to file:", err);
+        return;
+      }
+      console.log(`Successfully wrote to ${filePath}`);
     });
+  });
 }
 
-// This function will initialize app
+// This function initializes the app, prompting the user and generating a README
 function init() {
-  inquirer.prompt(questions)
+  inquirer
+    .prompt(questions)
     .then((answers) => {
       console.log(answers); // Log answers to check the data structure
 
@@ -90,7 +93,6 @@ function init() {
       console.error("An error occurred:", error);
     });
 }
-
 
 // Function call to initialize app
 init();
