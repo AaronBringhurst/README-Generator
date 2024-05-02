@@ -39,21 +39,21 @@ function renderLicenseLink(license) {
 function renderLicenseSection(license) {
   if (license === "None") {
     return "";
-}
+  } else {
+    const badge = renderLicenseBadge(license);
+    const link = renderLicenseLink(license);
 
-const badge = renderLicenseBadge(license);
-const link = renderLicenseLink(license);
-
-return `## License\nThis project is licensed under the ${link}.\n\n${badge}`;
+    return `## License\nThis project is licensed under the ${link}.\n\n${badge}`;
+  }
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+  const licenseBadge = renderLicenseBadge(data.license);
   return `# ${data.title}
-  # ${answers.title}
 
 ## Description
-${answers.description}
+${data.description}
 
 ## Table of Contents
 - [Installation](#installation)
@@ -64,24 +64,24 @@ ${answers.description}
 - [Questions](#questions)
 
 ## Installation
-${answers.installation}
+${data.installation}
 
 ## Usage
-${answers.usage}
+${data.usage}
 
 ## License
-This project is licensed under the ${answers.license} license.
+This project is licensed under the ${renderLicenseSection(data.license)} license.
 
 ## Contributing
-${answers.contributing}
+${data.contributing}
 
 ## Tests
-${answers.tests}
+${data.tests}
 
 ## Questions
-${answers.questions}
-
+${data.questions}
 `;
 }
+
 
 module.exports = generateMarkdown;

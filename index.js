@@ -2,6 +2,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown =require('./utils/generateMarkdown');
+const path = require("path");
 
 // This is an array of questions for user input
 const questions = [
@@ -78,9 +79,10 @@ function writeToFile(baseFileName, data) {
 
 // This function will initialize app
 function init() {
-  inquirer
-    .prompt(questions)
+  inquirer.prompt(questions)
     .then((answers) => {
+      console.log(answers); // Log answers to check the data structure
+
       const markdownContent = generateMarkdown(answers);
       writeToFile("README.md", markdownContent);
     })
@@ -88,6 +90,7 @@ function init() {
       console.error("An error occurred:", error);
     });
 }
+
 
 // Function call to initialize app
 init();
