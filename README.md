@@ -6,6 +6,7 @@ This project is a command-line application that generates a README file for a gi
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
+- [Video](#video)
 - [License](#license)
 - [Contributing](#contributing)
 - [Tests](#tests)
@@ -15,7 +16,20 @@ This project is a command-line application that generates a README file for a gi
 1. Clone the repository: git clone https://github.com/AaronBringhurst/README-Generator.git Navigate to the project directory: cd README-Generator 
 
 ## Usage
+Ensure you have Node.js installed on your machine.
+Navigate to the project directory and install the necessary dependencies:
 
+- npm install
+
+Run the application by executing the following command:
+
+- node index.js
+
+Follow the prompts to enter your project details. The application will guide you through entering information such as the project title, description, installation instructions, usage information, license, contribution guidelines, and more.
+Once completed, the application will generate a README.md file in the project directory with all the provided details.
+
+## Video
+Watch a video demonstration of the project [here](https://drive.google.com/file/d/1PBtb0EigT6bzj-JJCri4EQxZwmDEFhDn/view).
 
 ## License
 This project is licensed under the ## License
